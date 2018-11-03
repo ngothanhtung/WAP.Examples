@@ -1,0 +1,38 @@
+﻿@model IEnumerable<AspNetMvcExamples.Models.Product>
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product</h2>
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            @foreach (var p in Model)
+            {
+                <div style="margin-bottom: 20px" class="col-md-4">
+                    <a href="@Url.Action("Details", "Session02", new {id = p.Id})">
+                        <img src="@Url.Content(p.ImageUrl)" class="img img-thumbnail" />
+                    </a>
+                    <div class="text-center">
+                        <h4>@p.Name</h4>
+                        <h5>@p.Price.ToString("C2")</h5>
+                        <a class="btn btn-danger" href="@Url.Action("Details", "Session02", new {id = p.Id})">Details</a>
+                        @*<a class="btn btn-danger" href="/Product/Details/@p.Id">Details</a>*@
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+    <div class="col-md-3">
+        @* CACH 1*@
+        @Html.Partial("_NewProductsPartial")
+
+        @*CACH 2*@
+        @Html.Action("PartialViewResultSample")
+
+        @*CACH 3*@
+        @*CACH 2*@
+        @Html.Action("DynamicPartialViewResultSample")
+    </div>
+</div>
