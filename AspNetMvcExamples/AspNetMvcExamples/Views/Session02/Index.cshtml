@@ -25,14 +25,13 @@
         </div>
     </div>
     <div class="col-md-3">
-        @* CACH 1*@
+        @*CACH 1*@
+        @Html.Partial("_LogoPartial")
+
+        @*CACH 2*@
         @Html.Partial("_NewProductsPartial")
 
-        @*CACH 2*@
-        @Html.Action("PartialViewResultSample")
-
         @*CACH 3*@
-        @*CACH 2*@
-        @Html.Action("DynamicPartialViewResultSample")
+        @Html.Action("ProductDetailsPartial", new {id = 1})
     </div>
 </div>

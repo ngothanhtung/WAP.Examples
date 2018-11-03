@@ -28,20 +28,18 @@ namespace AspNetMvcExamples.Controllers
             return new EmptyResult();
         }
 
-        public ActionResult PartialViewResultSample()
+        public ActionResult NewProductsPartial()
         {
-            return PartialView("_NewProductsPartial"); // pass DataModel to PartialPage
-            //return PartialView("_NewProductsPartial", new[] { "C#", "JAVA" }); // pass DataModel to PartialPage
-            //return PartialView("_MenuPartial", null);
+            var products500 = this.GetProducts().Where(x =>x.Price >= 500).ToList();
+
+            return PartialView("_NewProductsPartial", products500); // pass DataModel to PartialPage
         }
 
-        public ActionResult DynamicPartialViewResultSample()
+        public ActionResult ProductDetailsPartial(int id)
         {
-            var array = new List<string>();
-            array.Add("Laptop Dell");
-            array.Add("Laptop Acer");
-            array.Add("Laptop Asus");
-            return PartialView("_DynamicNewProductsPartial", array); // pass DataModel to PartialPage
+            var products = this.GetProducts();
+            var product = products.FirstOrDefault(x => x.Id == id);
+            return PartialView("_ProductDetailsPartial", product); // pass DataModel to PartialPage
         }
 
         public ActionResult RedirectResultExample()

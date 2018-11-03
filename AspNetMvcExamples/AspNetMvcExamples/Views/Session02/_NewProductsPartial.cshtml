@@ -1,10 +1,11 @@
-﻿<h3>New Products</h3>
+﻿@model  IEnumerable<AspNetMvcExamples.Models.Product>
+<h3>New Products</h3>
 <hr/>
 <ul>
-    <li>
-        iPhone
-    </li>
-    <li>
-        Samsung S7
-    </li>
+    @foreach (var p in Model)
+    {
+        <li>
+            @p.Name
+        </li>
+    }
 </ul>
