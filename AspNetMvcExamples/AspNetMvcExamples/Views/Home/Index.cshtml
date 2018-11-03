@@ -2,7 +2,9 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-   <h1>Hello ASP.NET MVC</h1>
-</div>
+
+@Html.Action("NewProductsPartial", "Session02")
+<hr/>
+@Html.Action("TopProductsPartial", "Session02")
+
 

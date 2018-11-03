@@ -29,9 +29,9 @@
         @Html.Partial("_LogoPartial")
 
         @*CACH 2*@
-        @Html.Partial("_NewProductsPartial")
+        @Html.Action("NewProductsPartial")
 
         @*CACH 3*@
-        @Html.Action("ProductDetailsPartial", new {id = 1})
+        @Html.Action("ProductDetailsPartial", new {id = 2})
     </div>
 </div>
