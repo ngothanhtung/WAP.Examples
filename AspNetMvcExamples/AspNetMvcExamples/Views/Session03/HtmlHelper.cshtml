@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewBag.Title = "HtmlHelper";
+
+}
+
+<h2>HtmlHelper</h2>
+
+@Html.TextBox("UserName1", "", new { @class = "form-control", placeholder = "Enter your username" })
+@Html.DropDownList("City1", (SelectList)ViewBag.CityList, new { @class = "form-control" })
+@Html.DropDownList("City", null, new { @class = "form-control" })
+
+@Html.DropDownList("City9", new List<SelectListItem>() { new SelectListItem() { Text = "Ho Chi Minh", Value = "HCM" } }, new { @class = "form-control" })
+
+@using (Html.BeginForm("HtmlHelper", "Session03", FormMethod.Post))
+{
+    @Html.TextBox("UserName", "", new { @class = "form-control", placeholder = "Enter your username" })
+    @Html.Password("Password", "", new { @class = "form-control", placeholder = "Enter your password" })
+    <button type="submit" class="btn btn-primary">Login</button>
+}
+

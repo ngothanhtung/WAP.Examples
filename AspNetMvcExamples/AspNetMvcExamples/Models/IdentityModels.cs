@@ -29,5 +29,7 @@ namespace AspNetMvcExamples.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<AspNetMvcExamples.Models.BankAccount> BankAccounts { get; set; }
     }
 }

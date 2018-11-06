@@ -1,0 +1,22 @@
+﻿@{
+    ViewBag.Title = "Razor";
+}
+
+
+
+<h2>Razor</h2>
+
+@{
+    var products = new List<string>() { "Laptop", "Mobile"};
+    products.Add("Tablet");
+    foreach (var s in products)
+    {
+        <h1>@s</h1>
+    }
+}
+
+@foreach (var p in products)
+{
+    var s = "- " + p;
+    <h3>@s</h3>
+}
