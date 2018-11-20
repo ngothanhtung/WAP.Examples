@@ -19,5 +19,7 @@ namespace AspNetMvcExamples.Data
                 .Property(e => e.Price)
                 .HasPrecision(19, 4);
         }
+
+        public System.Data.Entity.DbSet<AspNetMvcExamples.Models.CreateProductViewModel> CreateProductViewModels { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace AspNetMvcExamples.Controllers
                 .Select(x => new ProductViewModel() { Id = x.Id, Name = x.Name, Price = x.Price })
                 .ToList();
 
-            return View();
+            return View(products);
         }
 
         public ActionResult Search(string name, decimal? minPrice)
@@ -43,6 +43,36 @@ namespace AspNetMvcExamples.Controllers
             }).ToList();
 
             return View(result);
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(CreateProductViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var product = new Product()
+                {
+                    Name = model.Name,
+                    Price = model.Price,
+                    Discount = 0,
+                    Stock = 0,
+                    CategoryId = 1,
+                    SupplierId = 1,
+                    Description = ""
+                };
+
+                db.Products.Add(product);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+
         }
     }
 }

@@ -14,12 +14,12 @@ namespace AspNetMvcExamples.Controllers
         }
 
 
-        private IList<Product> GetProducts()
+        private IList<DummyProduct> GetProducts()
         {
-            var products = new List<Product>();
+            var products = new List<DummyProduct>();
 
             // Product 1
-            var p1 = new Product();
+            var p1 = new DummyProduct();
             p1.Id = 1;
             p1.Name = "iPhone 6";
             p1.Price = 500;
@@ -28,7 +28,7 @@ namespace AspNetMvcExamples.Controllers
             products.Add(p1);
 
             // Product 2
-            var p2 = new Product();
+            var p2 = new DummyProduct();
             p2.Id = 2;
             p2.Name = "iPhone 6s";
             p2.Price = 600;
@@ -37,7 +37,7 @@ namespace AspNetMvcExamples.Controllers
             products.Add(p2);
 
             // Product 3
-            var p3 = new Product();
+            var p3 = new DummyProduct();
             p3.Id = 3;
             p3.Name = "iPhone 6s Plus";
             p3.Price = 800;
@@ -46,7 +46,7 @@ namespace AspNetMvcExamples.Controllers
             products.Add(p3);
 
             // Product 4
-            var p4 = new Product();
+            var p4 = new DummyProduct();
             p4.Id = 4;
             p4.Name = "iPhone SE";
             p4.Price = 400;
