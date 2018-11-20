@@ -1,0 +1,16 @@
+﻿@model IEnumerable<AspNetMvcExamples.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@Html.DisplayForModel("ProductsTemplate")
+@foreach (var p in Model)
+{
+    @Html.DisplayFor(x => p, "ProductTemplate")
+    @Html.EditorFor(x => p.Name)
+    @Html.EditorFor(x => p.Name, "ProductName")
+}
+
+

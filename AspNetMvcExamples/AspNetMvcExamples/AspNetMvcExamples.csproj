@@ -196,6 +196,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Session02Controller.cs" />
+    <Compile Include="Controllers\Session04Controller.cs" />
     <Compile Include="Controllers\Session03Controller.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -327,6 +328,12 @@
     <Content Include="Views\BankAccounts\Edit.cshtml" />
     <Content Include="Views\BankAccounts\Index.cshtml" />
     <Content Include="Views\Session03\Razor.Mobile.cshtml" />
+    <Content Include="Views\Session04\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProductTemplate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProductsTemplate.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\ProductName.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
