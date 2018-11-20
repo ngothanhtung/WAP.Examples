@@ -11,7 +11,7 @@ namespace AspNetMvcExamples.Data
         public OnlineShopDb() : base("name=OnlineShopDb")
         {
         }
-        public virtual DbSet<Product> Products { get; set; }
+       
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -20,6 +20,7 @@ namespace AspNetMvcExamples.Data
                 .HasPrecision(19, 4);
         }
 
-        public System.Data.Entity.DbSet<AspNetMvcExamples.Models.CreateProductViewModel> CreateProductViewModels { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
     }
 }

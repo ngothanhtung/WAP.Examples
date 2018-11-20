@@ -47,6 +47,8 @@ namespace AspNetMvcExamples.Controllers
 
         public ActionResult Create()
         {
+            var categories = db.Categories.ToList();
+            ViewBag.CategoryId = new SelectList(categories, "Id", "Name");
             return View();
         }
 

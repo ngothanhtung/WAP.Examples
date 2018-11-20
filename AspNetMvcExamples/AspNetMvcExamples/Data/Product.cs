@@ -10,7 +10,7 @@ namespace AspNetMvcExamples.Data
     {
         public int Id { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="*")]
         [StringLength(50)]
         public string Name { get; set; }
 
@@ -24,6 +24,7 @@ namespace AspNetMvcExamples.Data
         public string Description { get; set; }
 
         public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
         public int SupplierId { get; set; }
     }

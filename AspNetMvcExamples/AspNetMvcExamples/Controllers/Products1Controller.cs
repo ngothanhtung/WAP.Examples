@@ -17,7 +17,8 @@ namespace AspNetMvcExamples.Controllers
         // GET: Products1
         public ActionResult Index()
         {
-            return View(db.Products.ToList());
+            var products = db.Products.Include(p => p.Category);
+            return View(products.ToList());
         }
 
         // GET: Products1/Details/5
@@ -38,6 +39,8 @@ namespace AspNetMvcExamples.Controllers
         // GET: Products1/Create
         public ActionResult Create()
         {
+            var categories = db.Categories.ToList();
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Name");
             return View();
         }
 
@@ -55,6 +58,7 @@ namespace AspNetMvcExamples.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
 
@@ -70,6 +74,7 @@ namespace AspNetMvcExamples.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
 
@@ -86,6 +91,7 @@ namespace AspNetMvcExamples.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.CategoryId = new SelectList(db.Categories, "Id", "Id", product.CategoryId);
             return View(product);
         }
 

@@ -21,7 +21,8 @@ namespace AspNetMvcExamples.Models
         [Column(TypeName = "money")]
         [Range(0, double.MaxValue, ErrorMessage = "Please enter valid number")]
         [Required(ErrorMessage = "*")]
-        public decimal Price { get; set; }        
+        public decimal Price { get; set; }      
+        public int CategoryId { get; set; }
     }
 
    public class DummyProduct
