@@ -1,22 +1,12 @@
-﻿@model IEnumerable<AspNetMvcExamples.Models.ProductViewModel>
+﻿@model IEnumerable<AspNetMvcExamples.Data.Product>
+
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 <div class="row">
     @foreach (var p in Model)
     {
-        <div class="col-md-4" style="margin-bottom: 24px">
-            <div style="border: 1px solid gray; padding: 8px; border-radius: 8px">
-            <h4>
-                @p.Name
-            </h4>
-                <h6>
-                    @p.Price
-                </h6>
-            </div>
-        </div>
+        @Html.DisplayFor(x => p, "ProductTemplate")
     }
 </div>
-

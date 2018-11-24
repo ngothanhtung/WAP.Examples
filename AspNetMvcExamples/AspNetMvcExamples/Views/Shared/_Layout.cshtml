@@ -46,14 +46,27 @@
             </div>
         </nav>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Aptech WAP</p>
-        </footer>
+<div class="container body-content">
+    <div class="row">
+        <div class="col-md-3">
+            <div style="padding-top: 12px">
+                @Html.Action("CategoriesPartial", "Categories")
+            </div>
+         
+        </div>
+        <div class="col-md-9">
+            <div style="padding-top: 12px">
+                @RenderBody()
+            </div>           
+        </div>
     </div>
+  
+
+    <hr/>
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Aptech WAP</p>
+    </footer>
+</div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

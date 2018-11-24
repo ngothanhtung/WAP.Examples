@@ -1,0 +1,18 @@
+﻿@using AspNetMvcExamples.Data
+@model AspNetMvcExamples.Data.Product
+
+@{
+    ViewBag.Title = "Details";
+    var otherProducts = ViewBag.OtherProducts as IList<Product>;
+}
+
+<h1>
+    @Model.Name
+</h1>
+<hr/>
+<div class="row">
+    @foreach (var p in otherProducts)
+    {
+        @Html.DisplayFor(x => p, "ProductTemplate")
+    }
+</div>

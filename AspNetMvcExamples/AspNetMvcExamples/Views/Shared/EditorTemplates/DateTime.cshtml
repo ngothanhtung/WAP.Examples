@@ -1,2 +1,2 @@
-﻿@model System.DateTime
-Choose a day: @Html.TextBoxFor(x => x, new { type = "date" })
+﻿@model System.DateTime?
+Choose a day: @Html.TextBoxFor(x => x, new { @class= "form-control datepicker" })

@@ -1,80 +1,61 @@
-﻿using AspNetMvcExamples.Data;
-using AspNetMvcExamples.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using System.Data.Entity;
+using AspNetMvcExamples.Data;
 
 namespace AspNetMvcExamples.Controllers
 {
     public class ProductsController : Controller
     {
-        private readonly OnlineShopDb db = new OnlineShopDb();
+        private OnlineShopDb db = new OnlineShopDb();
 
-        public ActionResult Index()
+        // GET: Products1
+        public ActionResult Index(int? categoryId)
         {
-            IList<ProductViewModel> products = db.Products
-                .Select(x => new ProductViewModel() { Id = x.Id, Name = x.Name, Price = x.Price })
-                .ToList();
-
-            return View(products);
+            
+            if (categoryId.HasValue)
+            {
+                var products = db.Products.Include(p => p.Category).Where(x => x.CategoryId == categoryId.Value);
+                return View(products.ToList());
+            }
+            else
+            {
+                var products = db.Products.Include(p => p.Category);
+                return View(products.ToList());
+            }
+           
         }
 
-        public ActionResult Search(string name, decimal? minPrice)
+        // GET: Products1/Details/5
+        public ActionResult Details(int? id)
         {
-            var products = db.Products.Where(x => x.Id > 0);
-            if (string.IsNullOrEmpty(name) == false)
+            if (id == null)
             {
-                products = products.Where(x => x.Name.Contains(name));             
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-          
-            if (minPrice.HasValue)
+            Product product = db.Products.Find(id);
+            var otherProducts = db.Products.Where(x => x.CategoryId == product.CategoryId && x.Id != product.Id).Take(3).ToList();
+            ViewBag.OtherProducts = otherProducts;
+
+            if (product == null)
             {
-                products = products.Where(x => x.Price >= minPrice);
+                return HttpNotFound();
             }
-
-            IList<ProductViewModel> result = products.Select(x => new ProductViewModel()
-            {
-                Id = x.Id,
-                Name = x.Name,
-                Price = x.Price
-            }).ToList();
-
-            return View(result);
+            return View(product);
         }
-
-        public ActionResult Create()
+        
+        protected override void Dispose(bool disposing)
         {
-            var categories = db.Categories.ToList();
-            ViewBag.CategoryId = new SelectList(categories, "Id", "Name");
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(CreateProductViewModel model)
-        {
-            if (ModelState.IsValid)
+            if (disposing)
             {
-                var product = new Product()
-                {
-                    Name = model.Name,
-                    Price = model.Price,
-                    Discount = 0,
-                    Stock = 0,
-                    CategoryId = 1,
-                    SupplierId = 1,
-                    Description = ""
-                };
-
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.Dispose();
             }
-
-            return View(model);
-
+            base.Dispose(disposing);
         }
     }
 }

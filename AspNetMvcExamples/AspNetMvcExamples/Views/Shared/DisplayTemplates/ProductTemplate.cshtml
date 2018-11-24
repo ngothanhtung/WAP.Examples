@@ -1,6 +1,23 @@
-﻿@model AspNetMvcExamples.Models.Product
+﻿@model AspNetMvcExamples.Data.Product
     
-<h3>@Model.Name</h3>
-<h4>
-    @Model.Price
-</h4>
+<div class="col-md-4">
+            
+    <div>
+        <a href="@Url.Action("Details", "Products", new {id = Model.Id})">
+            <img style="width: 100%" src="@Model.ImageUrl"/>
+        </a>
+
+    </div>
+    <div class="text-center">
+        <strong>
+            @Model.Name
+        </strong>
+    </div>
+
+    <div class="text-center">
+        @Model.Price
+    </div>
+    <div style="height: 24px">
+
+    </div>
+</div>

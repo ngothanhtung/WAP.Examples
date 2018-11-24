@@ -27,5 +27,8 @@ namespace AspNetMvcExamples.Data
         public Category Category { get; set; }
 
         public int SupplierId { get; set; }
+
+        public DateTime? CreatedDate { get; set; }
+        public string ImageUrl { get; set; }
     }
 }
