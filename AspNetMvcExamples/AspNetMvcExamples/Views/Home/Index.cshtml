@@ -2,9 +2,25 @@
     ViewBag.Title = "Home Page";
 }
 
+<div id="div1">
 
+</div>
 @Html.Action("NewProductsPartial", "Session02")
-<hr/>
+<hr />
 @Html.Action("TopProductsPartial", "Session02")
 
+@section scripts{
+    <script>
+        $('#div').innerHTML = 'Hello';
+    </script>
+}
 
+@section styles {
+    <style>
+        #div1 {
+            height: 100px;
+            background-color: red;
+
+        }
+    </style>
+}

@@ -1,3 +1,5 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var LayoutName = System.Configuration.ConfigurationManager.AppSettings["LayoutName"];
+    Layout = "~/Views/Shared/_" + LayoutName + "Layout.cshtml";
 }

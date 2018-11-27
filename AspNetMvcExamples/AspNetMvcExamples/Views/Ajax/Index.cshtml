@@ -1,0 +1,104 @@
+﻿@Ajax.ActionLink("Get Comment", "GetComments", new { }, new AjaxOptions() { OnComplete = "onComplete", HttpMethod = "GET", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "ajax-container" }, new { @class = "btn btn-danger" })
+@Ajax.ActionLink("Get Comment (Json)", "GetCommentsWithJson", new { }, new AjaxOptions() { OnComplete = "onCompleteJson", HttpMethod = "GET", InsertionMode = InsertionMode.InsertAfter, UpdateTargetId = "ajax-container-json" }, new { @class = "btn btn-danger" })
+
+<button id="button-get-comments" class="btn btn-primary">Get Comments (Jquery)</button>
+
+<button id="button-post-comment" class="btn btn-primary">Post Comment (Jquery)</button>
+
+<select class="form-control" id="select-city">
+    <option value="">[Select a city]</option>
+    <option value="danang">Da Nang</option>
+    <option value="hanoi">Ha Noi</option>
+    <option value="hcm">Ho Chi Minh</option>
+</select>
+
+<select class="form-control" id="select-district">
+   
+</select>
+
+<div id="ajax-container">
+
+</div>
+
+<div id="ajax-container-json">
+
+</div>
+
+@using (Ajax.BeginForm("PostComment", "Ajax", new AjaxOptions() { OnComplete = "onPostCompleted", UpdateTargetId = "container", InsertionMode = InsertionMode.InsertAfter }))
+{
+    <div class="form-horizontal">
+        <div class="form-inline">
+            @Html.Hidden("Id", "0")
+            @Html.TextBox("Text", "", new { @class = "form-control" })
+            @Html.TextBox("UserName", "", new { @class = "form-control" })
+            <input type="submit" value="Post" class="btn btn-primary" />
+        </div>
+    </div>
+}
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        function onComplete() {
+            alert('Done');
+        }
+
+        function onCompleteJson(data) {
+
+            var json = data.responseJSON;
+            jQuery.each(json,
+                function(i, item) {
+                    $("#ajax-container-json")
+                        .append("<div>" + item.Id + ": " + item.Text + ": " + item.UserName + "</div>");
+                });
+        }
+
+        function onPostCompleted(data) {
+            $('#Text').val('');
+            $('#UserName').val('');
+            console.log(data);
+        }
+
+        $(document).ready(function() {
+            $('#button-get-comments').click(function() {
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Action("GetCommentsWithJson")',
+                    data: {}
+                }).done(function(data) {
+                    console.log(data);
+                });
+            });
+
+            $('#button-post-comment').click(function() {
+                $.ajax({
+                    method: 'POST',
+                    url: '@Url.Action("PostComment")',
+                    data: { id: 0, text: 'Test', userName: 'jquery ajax' }
+                }).done(function(data) {
+                    console.log(data);
+                });
+            });
+
+            $('#select-city').change(function() {
+                var city = $(this).val();
+                // AJAX
+                $.ajax({
+                    method: 'GET',
+                    url: '@Url.Action("GetDistricts")' + '?city=' + city
+                }).done(function(data) {
+
+                    $('#select-district').empty();
+                    var districts = data;
+                    console.log(data);
+                    jQuery.each(districts,
+                        function(i, item) {
+                            console.log('OK');
+                            $('#select-district').append(`<option value='${item.Id}'>${item.Name}</option>`);
+                        });
+                });
+
+
+            })
+        });
+    </script>
+}
