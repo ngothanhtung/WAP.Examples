@@ -1,0 +1,8 @@
+﻿
+@model IEnumerable<OnlineShopMvcWeb.Data.Category>
+<div class="list-group">
+    @foreach (var c in Model)
+    {
+        <a href="@Url.Action("Index", "Products", new {rootCategoryId = c.ParentId, categoryId = c.Id})" class="list-group-item list-group-item-action">@c.Name</a>
+    }
+</div>

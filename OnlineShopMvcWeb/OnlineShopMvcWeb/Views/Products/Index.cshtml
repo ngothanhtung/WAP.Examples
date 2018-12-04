@@ -1,0 +1,12 @@
+﻿@model IEnumerable<OnlineShopMvcWeb.Data.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    @foreach (var p in Model)
+    {
+        @Html.DisplayFor(x => p, "ProductTemplate")
+    }
+</div>

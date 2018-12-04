@@ -1,0 +1,8 @@
+﻿@model IEnumerable<OnlineShopMvcWeb.Data.Category>
+
+@foreach (var c in Model)
+{
+    <li class="nav-item">
+        <a class="nav-link" href="@Url.Action("Index", "Products", new {rootCategoryId = c.Id})">@c.Name</a>
+    </li>
+}

@@ -1,0 +1,11 @@
+﻿@model IEnumerable<OnlineShopMvcWeb.Models.Product>
+
+@foreach (var p in Model)
+{
+    <h3>@p.Name</h3>
+
+    <h4>
+        @p.Price
+    </h4>
+    <hr />
+}

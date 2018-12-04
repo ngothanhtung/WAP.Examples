@@ -1,0 +1,53 @@
+﻿@model OnlineShopMvcWeb.Data.Product
+<div class="row">
+    <div class="col-md-4">
+        <a href="@Model.ImageUrl" data-fancybox="images" data-width="1920" data-height="1080">
+            <img style="width: 100%" src="@Model.ImageUrl" />
+        </a>
+    </div>
+    <div class="col-md-8">
+        <div class="text-left">
+            <h1>
+                @Model.Name
+            </h1>
+        </div>
+        <div class="text-left">
+            <strong>
+                Discount: @Model.Discount.ToString("N0") %
+            </strong>
+        </div>
+        <div class="text-left">
+            <strong>
+                Price: @Model.Price.ToString("N0") USD
+            </strong>
+        </div>
+        <div>
+            <div class="form-inline">
+                <input type="number" value="1" style="width: 120px" placeholder="Quantity" class="form-control" />
+                <span style="padding-left: 4px"></span>
+                <button class="btn btn-primary"><i class="fas fa-fw fa-cart-plus"></i> Add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div style="height: 24px">
+
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <p class="text-justify">
+            @Model.Description
+        </p>
+    </div>
+</div>
+<div class="row col-md-12">
+    @foreach (var image in Model.ProductImages)
+    {
+    <div class="" style="padding-right: 4px">
+        <a href="@image.ImageUrl" data-fancybox="images" data-width="800" data-height="800">
+            <img src="@image.ImageUrl" style="width: 100px; height: 100px" />
+        </a>       
+    </div>
+
+    }
+</div>

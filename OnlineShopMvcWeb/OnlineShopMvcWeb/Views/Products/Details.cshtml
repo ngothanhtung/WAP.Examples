@@ -1,0 +1,18 @@
+﻿@using OnlineShopMvcWeb.Data
+@model OnlineShopMvcWeb.Data.Product
+
+@{
+    ViewBag.Title = "Details";
+    var otherProducts = ViewBag.OtherProducts as IList<Product>;
+}
+
+@Html.DisplayFor(x => Model, "ProductDetailsTemplate")
+
+<hr />
+<h4>Relation Products</h4>
+<div class="row">
+    @foreach (var p in otherProducts)
+    {
+        @Html.DisplayFor(x => p, "ProductTemplate")
+    }
+</div>
