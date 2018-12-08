@@ -65,8 +65,8 @@
     <Reference Include="Microsoft.ApplicationInsights, Version=2.8.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.ApplicationInsights.2.8.1\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.4\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
@@ -203,12 +203,21 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
+    <Compile Include="Areas\Administration\Controllers\ManageCategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ManageProductsController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ManageSlidersController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ManageRolesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\ManageUsersController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartsController.cs" />
     <Compile Include="Controllers\SlidersController.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\IdentityRoleManager.cs" />
     <Compile Include="Data\ProductImage.cs" />
     <Compile Include="Data\Slider.cs" />
     <Compile Include="Data\Category.cs" />
@@ -217,10 +226,33 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201812080412114_Update.cs" />
+    <Compile Include="Migrations\201812080412114_Update.Designer.cs">
+      <DependentUpon>201812080412114_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812080440231_Table-Categories.cs" />
+    <Compile Include="Migrations\201812080440231_Table-Categories.Designer.cs">
+      <DependentUpon>201812080440231_Table-Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812080442086_Edit-Table-Categories.cs" />
+    <Compile Include="Migrations\201812080442086_Edit-Table-Categories.Designer.cs">
+      <DependentUpon>201812080442086_Edit-Table-Categories.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812080450336_Update1.cs" />
+    <Compile Include="Migrations\201812080450336_Update1.Designer.cs">
+      <DependentUpon>201812080450336_Update1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201812080521286_Update-Identity.cs" />
+    <Compile Include="Migrations\201812080521286_Update-Identity.Designer.cs">
+      <DependentUpon>201812080521286_Update-Identity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Areas\Administration\Models\EditUserViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ProductViewModels.cs" />
+    <Compile Include="Areas\Administration\Models\RoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -259,12 +291,34 @@
     <Content Include="Scripts\esm\popper.js.map" />
     <Content Include="Scripts\esm\popper-utils.min.js.map" />
     <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Areas\Administration\Views\web.config" />
+    <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageCategories\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageCategories\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageCategories\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageCategories\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageCategories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageUsers\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageSliders\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageSliders\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageSliders\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageSliders\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageSliders\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageProducts\Upload.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -329,9 +383,19 @@
     <Content Include="Views\Categories\_RootCategoriesPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductDetailsTemplate.cshtml" />
     <Content Include="Views\Sliders\_SlidersPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageUsers\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageUsers\Details.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageUsers\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageUsers\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageRoles\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageRoles\Create.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageRoles\Edit.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageRoles\Delete.cshtml" />
+    <Content Include="Areas\Administration\Views\ManageRoles\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ShoppingCarts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -343,6 +407,23 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201812080412114_Update.resx">
+      <DependentUpon>201812080412114_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812080440231_Table-Categories.resx">
+      <DependentUpon>201812080440231_Table-Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812080442086_Edit-Table-Categories.resx">
+      <DependentUpon>201812080442086_Edit-Table-Categories.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812080450336_Update1.resx">
+      <DependentUpon>201812080450336_Update1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201812080521286_Update-Identity.resx">
+      <DependentUpon>201812080521286_Update-Identity.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

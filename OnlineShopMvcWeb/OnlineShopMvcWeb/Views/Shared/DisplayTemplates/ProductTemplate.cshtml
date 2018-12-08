@@ -4,7 +4,7 @@
             
     <div>
         <a href="@Url.Action("Details", "Products", new {id = Model.Id})">
-            <img style="width: 100%" src="@Model.ImageUrl"/>
+            <img style="width: 100%" src="@Url.Content(Model.ImageUrl)"/>
         </a>
 
     </div>

@@ -10,11 +10,13 @@ namespace OnlineShopMvcWeb.Data
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage ="*")]
-        [StringLength(50)]
+        [Required]
+        [StringLength(100)]
         public string Name { get; set; }
+
         [StringLength(1000)]
         public string ImageUrl { get; set; }
+
         [Column(TypeName = "money")]
         public decimal Price { get; set; }
 
@@ -24,6 +26,7 @@ namespace OnlineShopMvcWeb.Data
 
         public string Description { get; set; }
 
+        [Range(typeof(int), "1", "9999")]        
         public int CategoryId { get; set; }
         public Category Category { get; set; }
 

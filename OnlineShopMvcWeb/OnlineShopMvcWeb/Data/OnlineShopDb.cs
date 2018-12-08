@@ -15,9 +15,14 @@ namespace OnlineShopMvcWeb.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>()
-                .Property(e => e.Price)
-                .HasPrecision(19, 4);
+            //modelBuilder.Entity<Category>()
+            //    .Property(p => p.Name)
+            //    .HasMaxLength(100)
+            //    .IsRequired();
+
+            //modelBuilder.Entity<Product>()
+            //    .Property(e => e.Price)
+            //    .HasPrecision(19, 4);
         }
 
         public virtual DbSet<Product> Products { get; set; }

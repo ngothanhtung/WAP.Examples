@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using OnlineShopMvcWeb.Data;
 using OnlineShopMvcWeb.Models;
 
 namespace OnlineShopMvcWeb.Controllers

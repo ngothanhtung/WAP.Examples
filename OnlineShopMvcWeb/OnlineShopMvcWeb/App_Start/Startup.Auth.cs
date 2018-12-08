@@ -4,6 +4,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
+using OnlineShopMvcWeb.Data;
 using Owin;
 using OnlineShopMvcWeb.Models;
 
@@ -22,6 +23,11 @@ namespace OnlineShopMvcWeb
             // Enable the application to use a cookie to store information for the signed in user
             // and to use a cookie to temporarily store information about a user logging in with a third party login provider
             // Configure the sign in cookie
+            
+            // TUNG.NGO added            
+            // Register RoleManager
+            app.CreatePerOwinContext<IdentityRoleManager>(IdentityRoleManager.Create);
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,

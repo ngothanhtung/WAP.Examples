@@ -16,3 +16,13 @@
         @Html.DisplayFor(x => p, "ProductTemplate")
     }
 </div>
+
+
+
+@section scripts {
+    <script>
+        function onPostAjaxCompleted(response) {
+            console.log(response.responseJSON);
+        }
+    </script>
+}
