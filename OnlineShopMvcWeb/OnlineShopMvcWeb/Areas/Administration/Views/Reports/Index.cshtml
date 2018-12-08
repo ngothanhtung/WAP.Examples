@@ -1,0 +1,14 @@
+﻿@model IEnumerable<dynamic>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var p in Model)
+{
+    <h3>@p.CategoryName</h3>
+    <h4>@p.Name</h4>
+    <p>@p.Price</p>
+
+}

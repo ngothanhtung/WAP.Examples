@@ -9,6 +9,10 @@ using System.Web.Routing;
 
 namespace OnlineShopMvcWeb
 {
+    public class GlobalSettings
+    {
+        public static string ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["OnlineShopDb"].ConnectionString;
+    }
     public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()

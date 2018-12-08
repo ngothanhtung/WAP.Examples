@@ -11,8 +11,7 @@ using OnlineShopMvcWeb.Models;
 
 namespace OnlineShopMvcWeb.Areas.Administration.Controllers
 {
-    //[Authorize(Users = "admin")]
-    //[Authorize(Users = "admin")]
+    [Authorize(Users = "tungnt@softech.vn")]
     public class ManageUsersController : Controller
     {
         public ManageUsersController()

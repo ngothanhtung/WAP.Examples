@@ -10,6 +10,7 @@ using OnlineShopMvcWeb.Data;
 
 namespace OnlineShopMvcWeb.Areas.Administration.Controllers
 {
+    [Authorize(Roles = "Administrators")]
     public class ManageCategoriesController : Controller
     {
         private OnlineShopDb db = new OnlineShopDb();

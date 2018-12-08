@@ -60,9 +60,9 @@ namespace OnlineShopMvcWeb
             //   consumerKey: "",
             //   consumerSecret: "");
 
-            //app.UseFacebookAuthentication(
-            //   appId: "",
-            //   appSecret: "");
+            app.UseFacebookAuthentication(
+               appId: "718612765181218",
+               appSecret: "36dcbdab7731653b38564ef34412b556");
 
             //app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
             //{
