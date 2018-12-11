@@ -14,7 +14,7 @@ using ApplicationUser = OnlineShopMvcWeb.Models.ApplicationUser;
 
 namespace OnlineShopMvcWeb.Areas.Administration.Controllers
 {
-    [Authorize(Users = "tungnt@softech.vn")]
+    [Authorize(Users = "thanhtungo@gmail.com")]
     public class ManageRolesController : Controller
     {
         private ApplicationUserManager _userManager;

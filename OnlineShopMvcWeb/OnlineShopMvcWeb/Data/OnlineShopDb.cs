@@ -8,7 +8,7 @@ namespace OnlineShopMvcWeb.Data
 {
     public class OnlineShopDb : DbContext
     {
-        public OnlineShopDb() : base("name=OnlineShopDb")
+        public OnlineShopDb() : base("DefaultConnection")
         {
         }
        
