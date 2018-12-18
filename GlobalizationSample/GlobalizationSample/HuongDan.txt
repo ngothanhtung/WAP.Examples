@@ -1,0 +1,7 @@
+﻿Các bạn lưu ý các điểm sau trong PROJECT:
+1. Xem trong file WEB.CONFIG để nắm được thiết lập chung (cố định).
+2. Xem 02 file StringResource.resx và StringResource.vi-VN.resx
+3. Xem file Global.ascx.cs
+4. Xem file View/Account/Login.cshtml
+5. Xem file View/Models/AccountViewModel ở class LoginViewModel dòng 52 và 57 (sử dụng LOCALIZATION với ANNOTATION)
+6. Xem file View/Home/Index.cshtml

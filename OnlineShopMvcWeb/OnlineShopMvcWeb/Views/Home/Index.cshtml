@@ -2,3 +2,13 @@
     ViewBag.Title = "Home Page";
 }
 @Html.Action("SlidersPartial", "Sliders")
+
+<h3>
+    @ViewBag.CultureName
+</h3>
+<h3>
+    @ViewBag.Today
+</h3>
+<h3>
+    @DateTime.Now.ToLongDateString()
+</h3>
