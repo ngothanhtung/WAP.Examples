@@ -15,12 +15,11 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OnlineShopMvcWeb</RootNamespace>
     <AssemblyName>OnlineShopMvcWeb</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
-    <IISExpressSSLPort>
-    </IISExpressSSLPort>
+    <IISExpressSSLPort>44309</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
@@ -215,6 +214,7 @@
     <Compile Include="Areas\Shippers\ShippersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Areas\Administration\Controllers\ManageRolesController.cs" />
@@ -222,6 +222,9 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ShoppingCartsController.cs" />
     <Compile Include="Controllers\SlidersController.cs" />
+    <Compile Include="Filters\CustomAuthorizeFilter.cs" />
+    <Compile Include="Filters\CustomExceptionFilter.cs" />
+    <Compile Include="Filters\CustomActionFilter.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
     <Compile Include="Models\IdentityRoleManager.cs" />
     <Compile Include="Data\ProductImage.cs" />
@@ -239,6 +242,16 @@
     <Compile Include="Models\ProductViewModels.cs" />
     <Compile Include="Areas\Administration\Models\RoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\StringResource.vi-VN.Designer.cs">
+      <DependentUpon>StringResource.vi-VN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\StringResource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StringResource.resx</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -248,6 +261,85 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Themes\sublime\cart.html" />
+    <Content Include="Content\Themes\sublime\categories.html" />
+    <Content Include="Content\Themes\sublime\checkout.html" />
+    <Content Include="Content\Themes\sublime\contact.html" />
+    <Content Include="Content\Themes\sublime\images\avds_large.jpg" />
+    <Content Include="Content\Themes\sublime\images\avds_small.jpg" />
+    <Content Include="Content\Themes\sublime\images\avds_xl.jpg" />
+    <Content Include="Content\Themes\sublime\images\cart.jpg" />
+    <Content Include="Content\Themes\sublime\images\cart_1.jpg" />
+    <Content Include="Content\Themes\sublime\images\categories.jpg" />
+    <Content Include="Content\Themes\sublime\images\check.png" />
+    <Content Include="Content\Themes\sublime\images\contact.jpg" />
+    <Content Include="Content\Themes\sublime\images\details_1.jpg" />
+    <Content Include="Content\Themes\sublime\images\details_2.jpg" />
+    <Content Include="Content\Themes\sublime\images\details_3.jpg" />
+    <Content Include="Content\Themes\sublime\images\details_4.jpg" />
+    <Content Include="Content\Themes\sublime\images\discount.png" />
+    <Content Include="Content\Themes\sublime\images\down.png" />
+    <Content Include="Content\Themes\sublime\images\footer.jpg" />
+    <Content Include="Content\Themes\sublime\images\home_slider_1.jpg" />
+    <Content Include="Content\Themes\sublime\images\icon_1.svg" />
+    <Content Include="Content\Themes\sublime\images\icon_2.svg" />
+    <Content Include="Content\Themes\sublime\images\icon_3.svg" />
+    <Content Include="Content\Themes\sublime\images\product_1.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_10.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_11.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_12.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_2.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_3.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_4.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_5.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_6.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_7.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_8.jpg" />
+    <Content Include="Content\Themes\sublime\images\product_9.jpg" />
+    <Content Include="Content\Themes\sublime\images\search.svg" />
+    <Content Include="Content\Themes\sublime\images\shopping.svg" />
+    <Content Include="Content\Themes\sublime\index.html" />
+    <Content Include="Content\Themes\sublime\js\cart.js" />
+    <Content Include="Content\Themes\sublime\js\categories.js" />
+    <Content Include="Content\Themes\sublime\js\checkout.js" />
+    <Content Include="Content\Themes\sublime\js\contact.js" />
+    <Content Include="Content\Themes\sublime\js\custom.js" />
+    <Content Include="Content\Themes\sublime\js\jquery-3.2.1.min.js" />
+    <Content Include="Content\Themes\sublime\js\product.js" />
+    <Content Include="Content\Themes\sublime\plugins\easing\easing.js" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\css\font-awesome.css" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\css\font-awesome.min.css" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\HELP-US-OUT.txt" />
+    <Content Include="Content\Themes\sublime\plugins\greensock\animation.gsap.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\greensock\ScrollToPlugin.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\greensock\TimelineMax.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\greensock\TweenMax.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\Isotope\isotope.pkgd.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\ajax-loader.gif" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\animate.css" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\owl.carousel.css" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\owl.carousel.js" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\owl.theme.default.css" />
+    <Content Include="Content\Themes\sublime\plugins\OwlCarousel2-2.2.1\owl.video.play.png" />
+    <Content Include="Content\Themes\sublime\plugins\parallax-js-master\parallax.min.js" />
+    <Content Include="Content\Themes\sublime\plugins\scrollmagic\ScrollMagic.min.js" />
+    <Content Include="Content\Themes\sublime\product.html" />
+    <Content Include="Content\Themes\sublime\styles\bootstrap4\bootstrap.min.css" />
+    <Content Include="Content\Themes\sublime\styles\bootstrap4\bootstrap.min.js" />
+    <Content Include="Content\Themes\sublime\styles\bootstrap4\popper.js" />
+    <Content Include="Content\Themes\sublime\styles\cart.css" />
+    <Content Include="Content\Themes\sublime\styles\cart_responsive.css" />
+    <Content Include="Content\Themes\sublime\styles\categories.css" />
+    <Content Include="Content\Themes\sublime\styles\categories_responsive.css" />
+    <Content Include="Content\Themes\sublime\styles\checkout.css" />
+    <Content Include="Content\Themes\sublime\styles\checkout_responsive.css" />
+    <Content Include="Content\Themes\sublime\styles\contact.css" />
+    <Content Include="Content\Themes\sublime\styles\contact_responsive.css" />
+    <Content Include="Content\Themes\sublime\styles\main_styles.css" />
+    <Content Include="Content\Themes\sublime\styles\product.css" />
+    <Content Include="Content\Themes\sublime\styles\product_responsive.css" />
+    <Content Include="Content\Themes\sublime\styles\responsive.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -298,6 +390,39 @@
     <Content Include="Areas\Administration\Views\ManageProducts\Upload.cshtml" />
     <Content Include="Areas\Shippers\Views\web.config" />
     <Content Include="Areas\Administration\Views\Reports\Index.cshtml" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\fonts\FontAwesome.otf" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\animated.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\bordered-pulled.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\core.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\fixed-width.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\font-awesome.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\icons.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\larger.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\list.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\mixins.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\path.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\rotated-flipped.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\screen-reader.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\stacked.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\less\variables.less" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\font-awesome.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_animated.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_core.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_fixed-width.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_icons.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_larger.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_list.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_mixins.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_path.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_screen-reader.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_stacked.scss" />
+    <Content Include="Content\Themes\sublime\plugins\font-awesome-4.7.0\scss\_variables.scss" />
     <None Include="Properties\PublishProfiles\AptechOnlineShopMvcWeb - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\OnlineShopMvcWeb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
@@ -383,6 +508,10 @@
     <Content Include="Areas\Administration\Views\ManageRoles\Edit.cshtml" />
     <Content Include="Areas\Administration\Views\ManageRoles\Delete.cshtml" />
     <Content Include="Areas\Administration\Views\ManageRoles\Details.cshtml" />
+    <Content Include="Views\Shared\_SublimeLayout.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\StatusTemplate.cshtml" />
+    <Content Include="Views\Shared\_LanguagePartial.cshtml" />
+    <Content Include="Views\Filters\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -401,6 +530,16 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\StringResource.vi-VN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResource.vi-VN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\StringResource.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>StringResource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -421,7 +560,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50010</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50010/</IISUrl>
+          <IISUrl>https://localhost:44309/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

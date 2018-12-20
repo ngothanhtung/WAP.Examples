@@ -51,16 +51,16 @@ namespace GlobalizationSample
             //<appSettings>
             //    <add key="Language" value="vi-VN"/>
             //</appSettings>
-            var language = System.Configuration.ConfigurationManager.AppSettings["Language"];
-            switch (language)
-            {
-                case "vi":
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("vi-VN");
-                    break;
-                case "fr":
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("fr-FR");
-                    break;
-            }
+            //var language = System.Configuration.ConfigurationManager.AppSettings["Language"];
+            //switch (language)
+            //{
+            //    case "vi":
+            //        Thread.CurrentThread.CurrentUICulture = new CultureInfo("vi-VN");
+            //        break;
+            //    case "fr":
+            //        Thread.CurrentThread.CurrentUICulture = new CultureInfo("fr-FR");
+            //        break;
+            //}
         }
     }
 }

@@ -40,7 +40,7 @@ namespace OnlineShopMvcWeb.Areas.Administration.Controllers
 
         public ActionResult GetSubCategories(int parentId)
         {
-            var categories = db.Categories.Where(x => x.ParentId == parentId).OrderBy(x => x.SortOrder).ToList();
+            var categories = db.Categories.Where(x => x.ParentId == parentId && x.ParentId > 0).OrderBy(x => x.SortOrder).ToList();
             return Json(categories, JsonRequestBehavior.AllowGet);
         }
 
@@ -48,6 +48,8 @@ namespace OnlineShopMvcWeb.Areas.Administration.Controllers
         public ActionResult Create()
         {
             var parentCategories = db.Categories.Where(x => x.ParentId == 0).OrderBy(x => x.SortOrder).ToList();
+
+            parentCategories.Add(new Category() { Id = 0, Name = "[Select a parent category]", ParentId = 0, SortOrder = -1, Status = true });
 
             ViewBag.ParentCategoryId = new SelectList(parentCategories, "Id", "Name");
 

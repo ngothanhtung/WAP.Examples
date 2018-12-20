@@ -1,0 +1,42 @@
+﻿<script>
+    // https://www.w3schools.com/js/js_cookies.asp
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) == 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return "";
+    }
+
+
+    function changeLanguage(lang) {
+        javascript: document.cookie = 'language=' + lang; location.reload()
+    }
+</script>
+<ul class="nav navbar-nav navbar-right">
+    <li id="language-en" class="nav-item">
+        <a class="nav-link" href="#" onclick="changeLanguage('en')">EN</a>
+    </li>
+    <li id="language-vi" class="nav-item">
+        <a class="nav-link" href="#" onclick="changeLanguage('vi')">VI</a>
+    </li>
+</ul>
+}
+
+<script>
+    var language = getCookie('language');
+    if (language === 'en') {
+        document.getElementById('language-en').className = 'nav-item active';
+    } else {
+        document.getElementById('language-vi').className = 'nav-item active';
+    }
+
+</script>

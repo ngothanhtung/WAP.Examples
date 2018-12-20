@@ -49,16 +49,16 @@ namespace OnlineShopMvcWeb.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "LOGIN_Email", ResourceType = typeof(Resources.StringResource))]
         [EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
-        [Display(Name = "Password")]
+        [Display(Name = "LOGIN_Password", ResourceType = typeof(Resources.StringResource))]
         public string Password { get; set; }
 
-        [Display(Name = "Remember me?")]
+        [Display(Name = "LOGIN_RememberMe", ResourceType = typeof(Resources.StringResource))]
         public bool RememberMe { get; set; }
     }
 
