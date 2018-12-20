@@ -8,10 +8,10 @@ namespace OnlineShopMvcWeb
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            // GLOBALE LEVEL            
+            // GLOBAL LEVEL            
             filters.Add(new HandleErrorAttribute());
 
-            // GLOBALE LEVEL            
+            // GLOBAL LEVEL            
             filters.Add(new CustomActionFilter());
             filters.Add(new CustomAuthorizeFilter());
             filters.Add(new CustomExceptionFilter());

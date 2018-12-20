@@ -213,6 +213,7 @@
     <Compile Include="Areas\Administration\Controllers\ReportsController.cs" />
     <Compile Include="Areas\Shippers\ShippersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\ApiCategoriesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\FiltersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
